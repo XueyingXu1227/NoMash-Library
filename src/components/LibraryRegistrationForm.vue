@@ -105,7 +105,7 @@ const validatePassword = (blur) => {
 
 <template>
   <!-- 🗄️ W3. Library Registration Form -->
-  <div class="container mt-5">
+  <!-- <div class="container mt-5"> -->
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <h1 class="text-center">🗄️ W5. Library Registration Form</h1>
@@ -211,7 +211,7 @@ const validatePassword = (blur) => {
         </form>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 
   <div class="row mt-5">
     <h4>This is a Primevue Datatable.</h4>
@@ -248,20 +248,14 @@ const validatePassword = (blur) => {
 </template>
 
 <style scoped>
-.container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 80vw;
-  margin: 0 auto;
-  padding: 20px;
-  /* background-color: #e0bfbf; */
-  border-radius: 10px;
-}
+
+
 
 /* Class selectors */
 .form {
   text-align: center;
   margin-top: 50px;
-}
+} 
 
 /* ID selectors */
 #username:focus,
