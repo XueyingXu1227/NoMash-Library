@@ -9,7 +9,8 @@ const formData = ref({
   confirmPassword: '',
   isAustralian: false,
   reason: '',
-  gender: ''
+  gender: '',
+  suburb: 'Clayton'
 })
 
 const submittedCards = ref([])
@@ -169,6 +170,7 @@ const validatePassword = (blur) => {
                   v-model="formData.isAustralian"
                 />
                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
+
               </div>
             </div>
             
@@ -190,6 +192,18 @@ const validatePassword = (blur) => {
               Great to have a friend
             </div>
           </div>
+
+          <div class="mb-3">
+            <label for="suburb" class="form-label">Suburb</label>
+            <input
+              id="suburb"
+              type="text"
+              class="form-control"
+              :value="formData.suburb"  
+            />
+          </div>
+
+
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
             <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
