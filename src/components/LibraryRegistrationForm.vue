@@ -249,8 +249,6 @@ const validatePassword = (blur) => {
 
 <style scoped>
 
-
-
 /* Class selectors */
 .form {
   text-align: center;
