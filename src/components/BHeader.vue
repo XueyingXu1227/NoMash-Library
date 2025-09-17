@@ -23,6 +23,10 @@
         <li class="nav-item">
           <router-link to="/Firelogin" class="nav-link" active-class="active">Firebase Login</router-link>
         </li>
+        
+        <li class="nav-item" v-if="isAdmin">
+          <router-link to="/admin" class="nav-link">Admin</router-link>
+        </li>
       </ul>
     </header>
   </div>
@@ -31,9 +35,12 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/auth'
+import { computed } from 'vue'
 
 const router = useRouter()
-const { isAuthenticated, logout } = useAuth()
+const { state,  isAuthenticated, logout } = useAuth()
+
+const isAdmin = computed(() => state.user?.role === 'admin')
 
 function handleLogout() {
   logout()

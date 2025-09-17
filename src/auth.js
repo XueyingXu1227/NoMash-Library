@@ -20,12 +20,19 @@ export function useAuth() {
   const isAuthenticated = computed(() => !!state.token)
 
   function login({ username, password }) {
+
+    if (username === "admin" && password === "admin123") {
+      state.token = 'admin-token'
+      state.user = { username, role: 'admin' }
+      save()
+      return
+    }
     // Give token when condition is met
     if (username.trim().length < 3 || password.trim().length < 6) {
       throw new Error('Please enter a valid username (>=3) and password (>=6).')
     }
-    state.token = 'demo-' + Date.now()
-    state.user = { username: username.trim() }
+    state.token = 'user-' + Date.now()
+    state.user = { username: username.trim(), role: 'user' }
     save()
   }
 
@@ -33,6 +40,7 @@ export function useAuth() {
     state.token = null
     state.user = null
     save()
+    console.log("User after logout:", state.user)
   }
 
   return { state, isAuthenticated, login, logout }

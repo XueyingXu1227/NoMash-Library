@@ -7,6 +7,8 @@ import AccessDenied from '@/views/AccessDenied.vue'
 import { useAuth } from '@/auth'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
+import { getAuth } from "firebase/auth"
+
 
 
 const routes = [
@@ -45,7 +47,13 @@ const routes = [
   { 
     path: '/fireregister', 
     name: 'FireRegister', 
-    component: FirebaseRegisterView }
+    component: FirebaseRegisterView 
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../views/AdminView.vue'),
+    meta: { requiresAuth: true, requiresAdmin: true } }
 ]
 
 const router = createRouter({
@@ -53,18 +61,30 @@ const router = createRouter({
   routes
 })
 
-// Global Front Guard: Protect Restricted Routes + Block Logged-In Access /login
 router.beforeEach((to, from, next) => {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, state } = useAuth()
+  const role = state.user?.role
 
-  if (to.meta.requiresAuth && !isAuthenticated.value) {
-    next({ name: 'AccessDenied', query: { redirect: to.fullPath } })
+  // Admin 
+  if (to.meta.requiresAdmin) {
+    if (role === 'admin') {
+      next()
+    }else{
+      next({name: 'AccessDenied' })
+    }
     return
   } 
+  // requiresAuth 
+  if (to.meta.requiresAuth && !isAuthenticated.value) {
+    next({ name: 'AccessDenied' })
+    return
+  }
+
+  // guestOnly 
   if (to.meta.guestOnly && isAuthenticated.value) {
     next({ name: 'Members' })
     return
-  } 
+  }
     next()
 })
 
