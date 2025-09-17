@@ -5,7 +5,7 @@
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <router-link to="/" class="nav-link" active-class="active" >Home (Week 5)</router-link>
+          <router-link to="/" class="nav-link" active-class="active" >Home (Week 7)</router-link>
           <!-- <a href="#" class="nav-link active" aria-current="page">Home (Week 5)</a>-->
         </li>
         <li class="nav-item">
@@ -20,7 +20,9 @@
         <li class="nav-item" v-else>
           <routerLink to="/members" class="nav-link" exact-active-class="active">Members</routerLink>
         </li>
-        
+        <li class="nav-item">
+          <router-link to="/Firelogin" class="nav-link" active-class="active">Firebase Login</router-link>
+        </li>
       </ul>
     </header>
   </div>

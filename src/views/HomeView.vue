@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import LibraryRegistrationForm from '@/components/LibraryRegistrationForm.vue'
+import LibraryRegistrationForm from '../components/LibraryRegistrationForm.vue'
 </script>
