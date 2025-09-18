@@ -27,6 +27,11 @@
         <li class="nav-item" v-if="isAdmin">
           <router-link to="/admin" class="nav-link">Admin</router-link>
         </li>
+
+        <li class="nav-item">
+          <router-link to="/addbook" class="nav-link" active-class="active">Add Book</router-link>
+        </li>
+
       </ul>
     </header>
   </div>

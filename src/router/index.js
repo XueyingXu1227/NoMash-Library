@@ -8,7 +8,7 @@ import { useAuth } from '@/auth'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import { getAuth } from "firebase/auth"
-
+import AddBookView from '../views/AddBookView.vue'
 
 
 const routes = [
@@ -53,7 +53,13 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component: () => import('../views/AdminView.vue'),
-    meta: { requiresAuth: true, requiresAdmin: true } }
+    meta: { requiresAuth: true, requiresAdmin: true } 
+  },
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBookView
+  }
 ]
 
 const router = createRouter({
