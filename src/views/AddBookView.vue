@@ -12,6 +12,7 @@
       </div>
       <button type="submit">Add Book</button>
     </form>
+    <BookList />
   </div>
 </template>
 
