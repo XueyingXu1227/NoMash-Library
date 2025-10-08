@@ -21,7 +21,6 @@ export default {
   methods: {
     async getBookCount() {
       try {
-        const url = '<<<PASTE_YOUR_FUNCTION_URL_HERE>>>'; 
         const response = await axios.get('https://us-central1-week7-xueyingxu.cloudfunctions.net/countBooks');
         this.count = response.data.count;
         this.error = null;
